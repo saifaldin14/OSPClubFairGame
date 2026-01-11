@@ -9,7 +9,7 @@ function Footer() {
         <div className="footer-content">
           <div className="footer-section">
             <h3 className="footer-title">
-              <span className="brand-icon">💚</span> OSP
+              <img src="/UWOSP_Logo_White.png" alt="OSP Logo" className="footer-logo" />
             </h3>
             <p className="footer-description">
               Orphan Sponsorship Program - Making a difference in the lives 

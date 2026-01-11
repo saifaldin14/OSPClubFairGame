@@ -22,8 +22,7 @@ function Navbar() {
       <div className="container">
         <div className="navbar-content">
           <Link to="/" className="navbar-brand">
-            <span className="brand-icon">💚</span>
-            <span className="brand-text">OSP</span>
+            <img src="/UWOSP_Logo_White.png" alt="OSP Logo" className="brand-logo" />
           </Link>
 
           <button 

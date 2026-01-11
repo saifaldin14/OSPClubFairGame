@@ -24,6 +24,16 @@
   text-decoration: none;
 }
 
+.brand-logo {
+  height: 50px;
+  width: auto;
+  transition: var(--transition);
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
 .brand-icon {
   font-size: 1.75rem;
   margin-right: var(--spacing-xs);
@@ -116,6 +126,12 @@
   font-size: 1.5rem;
   margin-bottom: var(--spacing-sm);
   color: white;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: var(--spacing-sm);
 }
 
 .footer-description {
