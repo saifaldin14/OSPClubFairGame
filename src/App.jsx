@@ -8,7 +8,9 @@ import Donate from './pages/Donate'
 import Events from './pages/Events'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
+import Game from './pages/Game'
 import './App.css'
+import './game.css'
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </main>
       <Footer />

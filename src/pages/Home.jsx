@@ -64,6 +64,21 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <section className="section bg-light">
+        <div className="container">
+          <h2 className="section-title">Walk in Their Shoes</h2>
+          <p className="section-description">
+            Experience what it's like to be an orphan facing impossible choices every single day.
+          </p>
+          <div className="game-preview-card">
+            <div className="game-preview-icon">🕹️</div>
+            <h3>"3 Choices" - Interactive Experience</h3>
+            <p>A powerful 15-second game that shows the reality of daily decisions orphans must make.</p>
+            <a href="/game" className="btn btn-primary">Try the Experience</a>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
