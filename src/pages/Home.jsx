@@ -1,0 +1,71 @@
+import Hero from '../components/Hero'
+import Card from '../components/Card'
+
+function Home() {
+  return (
+    <div className="page home-page">
+      <Hero 
+        title="Welcome to OSP"
+        subtitle="Orphan Sponsorship Program"
+        description="Making a difference in the lives of orphans around the world through compassion, support, and Islamic values."
+        ctaText="Support Our Cause"
+        ctaLink="/donate"
+      />
+      
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">Our Mission</h2>
+          <p className="section-description">
+            OSP (Orphan Sponsorship Program) is dedicated to supporting orphans globally by providing 
+            essential resources, education, and care. We work within the framework of Islamic values 
+            to ensure every child receives the love, support, and opportunities they deserve.
+          </p>
+        </div>
+      </section>
+
+      <section className="section bg-light">
+        <div className="container">
+          <h2 className="section-title">What We Do</h2>
+          <div className="card-grid">
+            <Card 
+              title="Orphan Sponsorship"
+              description="Provide monthly support to orphans including food, clothing, education, and healthcare."
+              icon="💙"
+            />
+            <Card 
+              title="Educational Programs"
+              description="Ensure orphans have access to quality education and learning materials."
+              icon="📚"
+            />
+            <Card 
+              title="Healthcare Support"
+              description="Provide medical care, regular checkups, and essential healthcare services."
+              icon="🏥"
+            />
+            <Card 
+              title="Community Building"
+              description="Create supportive communities where orphans can thrive and grow."
+              icon="🤝"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">Make an Impact Today</h2>
+          <p className="section-description">
+            Your donation can change a child's life. Join us in our mission to provide hope, 
+            dignity, and a brighter future for orphans around the world.
+          </p>
+          <div className="cta-buttons">
+            <a href="/donate" className="btn btn-primary">Donate Now</a>
+            <a href="/programs" className="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default Home
