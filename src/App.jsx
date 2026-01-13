@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules'
 import OSPIntroSlide from './slides/OSPIntroSlide'
 import GameSlide from './slides/GameSlide'
+import OrphanageSimGame from './slides/OrphanageSimGame'
 import PlaceholderSlide from './slides/PlaceholderSlide'
 
 // Import Swiper styles
@@ -50,13 +51,9 @@ function App() {
           <GameSlide swiper={swiperInstance} />
         </SwiperSlide>
 
-        {/* Slide 3: Placeholder */}
+        {/* Slide 3: Orphanage Simulation Game */}
         <SwiperSlide>
-          <PlaceholderSlide 
-            title="Our Programs" 
-            subtitle="Discover how we help orphans"
-            slideNumber={3}
-          />
+          <OrphanageSimGame swiper={swiperInstance} />
         </SwiperSlide>
 
         {/* Slide 4: Placeholder */}
