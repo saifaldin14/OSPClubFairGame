@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
-function Game() {
-  const [gameState, setGameState] = useState('intro') // intro, choice1, choice2, choice3, end
+function Game({ isCarousel = false, swiper = null }) {
+  const [gameState, setGameState] = useState(isCarousel ? 'choice1' : 'intro') // intro, choice1, choice2, choice3, end
   const [choices, setChoices] = useState([])
   const [progressBar, setProgressBar] = useState(0)
   const [consequences, setConsequences] = useState({
@@ -195,7 +194,7 @@ function Game() {
   }
 
   const resetGame = () => {
-    setGameState('intro')
+    setGameState(isCarousel ? 'choice1' : 'intro')
     setChoices([])
     setProgressBar(0)
     setConsequences({
@@ -206,6 +205,13 @@ function Game() {
     })
     setSelectedOption(null)
     setShowConsequence(false)
+    
+    // Navigate back to slide 1 (game intro/game slide) in carousel mode and reload
+    if (isCarousel && swiper) {
+      swiper.slideTo(1)
+      // Trigger a page reload to reset the GameSlide component state
+      window.location.reload()
+    }
   }
 
   const renderIntro = () => {
@@ -380,9 +386,12 @@ function Game() {
         </div>
 
         <div className="end-actions">
-          <Link to="/donate" className="btn btn-primary btn-large">
+          <button 
+            className="btn btn-primary btn-large"
+            onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
+          >
             💚 Sponsor a Child Like Amira
-          </Link>
+          </button>
           <button 
             className="btn btn-secondary"
             onClick={resetGame}
@@ -403,9 +412,9 @@ function Game() {
   }
 
   return (
-    <div className="page game-page">
-      <div className="game-container">
-        {gameState === 'intro' && renderIntro()}
+    <div className={isCarousel ? "game-page-carousel" : "page game-page"}>
+      <div className={isCarousel ? "game-container-carousel" : "game-container"}>
+        {!isCarousel && gameState === 'intro' && renderIntro()}
         {gameState === 'choice1' && renderChoice('choice1')}
         {gameState === 'choice2' && renderChoice('choice2')}
         {gameState === 'choice3' && renderChoice('choice3')}

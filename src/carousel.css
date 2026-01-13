@@ -1,0 +1,199 @@
+/* Carousel App Styles */
+.carousel-app {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  overflow: visible;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.5;
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: white;
+  transform: scale(1.3);
+}
+
+/* Slide Content Container */
+.slide-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Intro Slide Specific */
+.intro-slide {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.intro-slide .slide-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* OSP Intro Slide */
+.osp-intro-slide {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Game Intro Slide */
+.game-intro-slide {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Game Slide Specific */
+.game-slide {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  padding: 0;
+  overflow: visible;
+}
+
+.game-slide .slide-container {
+  padding: 0;
+  max-width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: stretch;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Placeholder Slide */
+.placeholder-slide {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+}
+
+.placeholder-slide .slide-number {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 4rem;
+  font-weight: 700;
+  opacity: 0.2;
+  color: white;
+}
+
+.placeholder-slide h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.placeholder-slide p {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  color: white;
+}
+
+.placeholder-slide .coming-soon {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 16px;
+  }
+
+  .placeholder-slide h2 {
+    font-size: 2rem;
+  }
+
+  .placeholder-slide p {
+    font-size: 1.125rem;
+  }
+
+  .placeholder-slide .slide-number {
+    font-size: 3rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .placeholder-slide h2 {
+    font-size: 1.5rem;
+  }
+
+  .placeholder-slide p {
+    font-size: 1rem;
+  }
+}
