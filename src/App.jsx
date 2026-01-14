@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules'
+import { Navigation, Pagination, Keyboard } from 'swiper/modules'
 import OSPIntroSlide from './slides/OSPIntroSlide'
 import GameSlide from './slides/GameSlide'
 import OrphanageSimGame from './slides/OrphanageSimGame'
@@ -21,13 +21,10 @@ function App() {
   return (
     <div className="app carousel-app">
       <Swiper
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        modules={[Navigation, Pagination, Keyboard]}
         direction="horizontal"
         slidesPerView={1}
         spaceBetween={0}
-        mousewheel={{
-          forceToAxis: true,
-        }}
         keyboard={{
           enabled: true,
         }}
@@ -38,7 +35,7 @@ function App() {
         navigation={true}
         onSwiper={setSwiperInstance}
         className="main-swiper"
-        allowTouchMove={true}
+        allowTouchMove={false}
         nested={true}
       >
         {/* Slide 1: OSP Intro */}
