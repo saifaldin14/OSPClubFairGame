@@ -27,7 +27,7 @@ function OSPIntroSlide({ swiper }) {
 
       <div className="osp-stats">
         <div className="stat-item">
-          <div className="stat-number">10,000+</div>
+          <div className="stat-number">10K+</div>
           <div className="stat-label">Children Supported</div>
         </div>
         <div className="stat-item">

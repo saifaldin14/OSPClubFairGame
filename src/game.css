@@ -2282,6 +2282,7 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 12px;
 }
 
 .meter-fill {

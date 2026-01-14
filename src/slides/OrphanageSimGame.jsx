@@ -514,7 +514,7 @@ function OrphanageSimGame({ swiper }) {
               Play Again
             </button>
             <button 
-              className="btn btn-primary"
+              className="btn my-btn-primary"
               onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
             >
               Support Real Orphans
