@@ -6,12 +6,12 @@ function ImpactVisualizerGame({ swiper }) {
 
   const impactData = {
     100: {
-      children: { count: 2, label: 'Children Sponsored', icon: '👧🏽', color: '#ff6b9d' },
-      meals: { count: 180, label: 'Meals Provided', icon: '🍽️', color: '#ffa94d' },
-      education: { count: 2, label: 'Months Education', icon: '📚', color: '#74c0fc' },
-      healthcare: { count: 1, label: 'Health Checkups', icon: '🏥', color: '#51cf66' },
-      supplies: { count: 5, label: 'School Supply Kits', icon: '✏️', color: '#da77f2' },
-      clothing: { count: 4, label: 'Clothing Sets', icon: '👕', color: '#ffd43b' }
+      children: { count: 2, label: 'Children Sponsored', icon: '👧🏽', color: '#e8927c' },
+      meals: { count: 180, label: 'Meals Provided', icon: '🍽️', color: '#88b3e6' },
+      education: { count: 2, label: 'Months Education', icon: '📚', color: '#4a6fa5' },
+      healthcare: { count: 1, label: 'Health Checkups', icon: '🏥', color: '#6dd5a0' },
+      supplies: { count: 5, label: 'School Supply Kits', icon: '✏️', color: '#a8d4f0' },
+      clothing: { count: 4, label: 'Clothing Sets', icon: '👕', color: '#e8927c' }
     }
   }
 
@@ -37,18 +37,17 @@ function ImpactVisualizerGame({ swiper }) {
         <div className="impact-intro-content">
           <div className="intro-header">
             <span className="intro-emoji">💝</span>
-            <h2>See Your Impact</h2>
-            <p>Choose a donation amount to see exactly how it helps children in need</p>
+            <h2 style={{ color: 'var(--accent-color)' }}>See Your Impact</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Choose a donation amount to see exactly how it helps children in need</p>
           </div>
 
           <div className="donation-buttons">
             {[50, 100, 200, 500].map(amount => (
               <button
                 key={amount}
-                className={`donation-amount-btn ${amount === 100 ? 'featured' : ''}`}
+                className={`donation-amount-btn`}
                 onClick={() => handleVisualize(amount)}
               >
-                {amount === 100 && <span className="featured-tag">Most Popular</span>}
                 <span className="btn-amount">${amount}</span>
                 <span className="btn-impact">{Math.max(1, Math.floor(amount / 50))} child{amount >= 100 ? 'ren' : ''}/month</span>
               </button>
@@ -66,7 +65,7 @@ function ImpactVisualizerGame({ swiper }) {
           <button className="back-btn" onClick={() => setShowImpact(false)}>
             ← Back
           </button>
-          <h2>Your ${donationAmount} Creates Real Change</h2>
+          <h2 style={{ color: 'var(--accent-color)' }}>Your ${donationAmount} Creates Real Change</h2>
         </div>
 
         <div className="impact-cards-grid">
@@ -87,21 +86,15 @@ function ImpactVisualizerGame({ swiper }) {
         </div>
 
         <div className="impact-story">
-          <h3>What This Means</h3>
-          <p>
-            With <strong>${donationAmount}</strong>, you provide {impact[0].count} {impact[0].count === 1 ? 'child' : 'children'} with 
-            <strong> {impact[1].count} meals</strong>, <strong>{impact[2].count} months of education</strong>, 
+          <h3 style={{ color: 'var(--accent-color)' }}>What This Means</h3>
+          <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            With <strong style={{ color: 'var(--accent-color)' }}>${donationAmount}</strong>, you provide {impact[0].count} {impact[0].count === 1 ? 'child' : 'children'} with 
+            <strong style={{ color: 'var(--accent-color)' }}> {impact[1].count} meals</strong>, <strong style={{ color: 'var(--accent-color)' }}>{impact[2].count} months of education</strong>, 
             and essential supplies they need to thrive.
           </p>
         </div>
 
         <div className="impact-cta">
-          <button 
-            className="donate-now-btn"
-            onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
-          >
-            💝 Donate ${donationAmount} Now
-          </button>
           <button 
             className="try-another-btn"
             onClick={() => setShowImpact(false)}
