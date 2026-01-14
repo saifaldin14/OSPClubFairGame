@@ -330,7 +330,7 @@ function OrphanageSimGame({ swiper }) {
             </p>
           </div>
 
-          <button className="btn btn-primary btn-large" onClick={startGame}>
+          <button className="btn btn-primary btn-large btn-continue"onClick={startGame}>
             Start Managing <Rocket size={18} />
           </button>
         </div>

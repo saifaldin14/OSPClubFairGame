@@ -63,7 +63,7 @@ function GameSlide({ swiper }) {
 
       {/* CTA Button */}
       <button 
-        className="btn btn-primary btn-large btn-game-start-modern"
+        className="btn btn-primary btn-large btn-continue"
         onClick={handleStart}
       >
         Begin Amira's Day
