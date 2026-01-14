@@ -1266,6 +1266,29 @@
   gap: var(--spacing-sm);
 }
 
+.money-tracker {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border-radius: 25px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.5);
+  }
+}
+
 .time-badge,
 .stage-badge {
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -1286,7 +1309,7 @@
 
 .context-text {
   font-size: 1rem;
-  color: var(--text-medium);
+  color: rgba(255, 255, 255, 0.9);
   font-style: italic;
   margin: 0;
 }

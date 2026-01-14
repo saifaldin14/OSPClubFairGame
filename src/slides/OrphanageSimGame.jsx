@@ -10,12 +10,6 @@ function OrphanageSimGame({ swiper }) {
     health: 50,
     happiness: 50
   })
-  const [children, setChildren] = useState([
-    { id: 1, name: "Sarah", age: 9, country: "Syria", needs: ["education"], emoji: "👧🏽", satisfied: true },
-    { id: 2, name: "Ahmed", age: 12, country: "Yemen", needs: ["food"], emoji: "👦🏽", satisfied: true },
-    { id: 3, name: "Fatima", age: 7, country: "Palestine", needs: ["health"], emoji: "👧🏾", satisfied: true },
-    { id: 4, name: "Omar", age: 14, country: "Somalia", needs: ["education"], emoji: "👦🏿", satisfied: true },
-  ])
   const [currentEvent, setCurrentEvent] = useState(null)
   const [decisions, setDecisions] = useState([])
   const [gameLog, setGameLog] = useState([])
@@ -247,7 +241,7 @@ function OrphanageSimGame({ swiper }) {
   const makeDecision = (choice) => {
     const newResources = { ...resources }
     Object.keys(choice.effects).forEach(key => {
-      newResources[key] = Math.max(0, Math.min(100, newResources[key] + choice.effects[key]))
+      newResources[key] = Math.max(0, newResources[key] + choice.effects[key])
     })
     
     setResources(newResources)
@@ -312,7 +306,7 @@ function OrphanageSimGame({ swiper }) {
 
           <div className="osp-context">
             <p>
-              <strong>This is what OSP does every day.</strong> At University of Waterloo, 
+              <strong>Supporting orphans is the goal of the UW OSP.</strong> At University of Waterloo, 
               the Orphan Sponsorship Program works with charities to provide real support 
               for orphaned children worldwide - balancing nutrition, healthcare, and education 
               to break the cycle of poverty.
@@ -408,7 +402,9 @@ function OrphanageSimGame({ swiper }) {
   if (gameState === 'results') {
     const score = calculateScore()
     const survived = resources.funds > 0
-    const rating = score >= 80 ? "Exceptional! 🌟" : score >= 60 ? "Great Job! 👏" : score >= 40 ? "Good Effort 💪" : "Struggling 😔"
+    const rating = survived 
+      ? (score >= 80 ? "Exceptional Management! 🌟" : score >= 60 ? "Strong Leadership! 👏" : score >= 40 ? "Good Effort 💪" : "Difficult Choices 😔")
+      : "Out of Funds - Orphanage Closed 💔"
 
     return (
       <div className="slide-container orphanage-sim-slide">
@@ -474,7 +470,7 @@ function OrphanageSimGame({ swiper }) {
           <div className="reality-check">
             <h3>The Reality</h3>
             <p>
-              This simulation only scratches the surface of what organizations like OSP face daily. 
+              This simulation only scratches the surface of what organizations that we support such as Human Appeal and Islamic Relief Canada face daily. 
               Real orphanages deal with these challenges continuously, often with fewer resources 
               and more children.
             </p>
@@ -491,7 +487,7 @@ function OrphanageSimGame({ swiper }) {
             </button>
             <button 
               className="btn btn-primary"
-              onClick={() => window.open('https://uwaterloo.ca/orphan-sponsorship-program/', '_blank')}
+              onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
             >
               Support Real Orphans
             </button>

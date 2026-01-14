@@ -18,7 +18,7 @@ function GameSlide({ swiper }) {
 
   return (
     <div className="slide-container game-intro-slide">
-      <div className="game-illustration">👶🏽</div>
+      <div className="game-illustration">👧🏽</div>
       <h1 className="game-title">Walk in Amira's Shoes</h1>
       <p className="game-subtitle">Experience a day in the life of a 10-year-old orphan</p>
       

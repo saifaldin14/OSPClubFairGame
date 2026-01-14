@@ -4,6 +4,7 @@ function Game({ isCarousel = false, swiper = null }) {
   const [gameState, setGameState] = useState(isCarousel ? 'choice1' : 'intro') // intro, choice1, choice2, choice3, end
   const [choices, setChoices] = useState([])
   const [progressBar, setProgressBar] = useState(0)
+  const [money, setMoney] = useState(2)
   const [consequences, setConsequences] = useState({
     hunger: 0,
     health: 0,
@@ -25,7 +26,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Use your $2 to buy bread for today', 
           impact: 'hunger', 
           consequence: 'You eat, but school costs $1...',
-          effects: { hunger: -30, education: 10, stress: 5 }
+          effects: { hunger: -30, education: 10, stress: 5, money: -2 }
         },
         { 
           id: 'school', 
@@ -33,7 +34,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Save money for school fees due tomorrow', 
           impact: 'education', 
           consequence: 'Your stomach growls through the morning...',
-          effects: { hunger: 20, education: -20, stress: 15 }
+          effects: { hunger: 20, education: -20, stress: 15, money: 0 }
         },
         { 
           id: 'medicine', 
@@ -41,7 +42,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Buy medicine for your younger brother\'s fever', 
           impact: 'health', 
           consequence: 'He needs you, but you both go hungry...',
-          effects: { hunger: 15, health: -25, stress: 10 }
+          effects: { hunger: 15, health: -25, stress: 10, money: -2 }
         }
       ]
     },
@@ -56,7 +57,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Ask a classmate to share their food', 
           impact: 'dignity', 
           consequence: 'They say yes, but you see the pity in their eyes...',
-          effects: { hunger: -20, stress: 25, education: 5 }
+          effects: { hunger: -20, stress: 25, education: 5, money: 0 }
         },
         { 
           id: 'work', 
@@ -64,7 +65,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Leave school to work at the market', 
           impact: 'labor', 
           consequence: 'You earn $3, but miss the lesson you needed...',
-          effects: { hunger: -15, education: 30, stress: 20 }
+          effects: { hunger: -15, education: 30, stress: 20, money: 3 }
         },
         { 
           id: 'endure', 
@@ -72,7 +73,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Push through the pain and stay in class', 
           impact: 'suffering', 
           consequence: 'You collapse during recess. The nurse sends you home...',
-          effects: { hunger: 25, health: 15, stress: 30 }
+          effects: { hunger: 25, health: 15, stress: 30, money: 0 }
         }
       ]
     },
@@ -87,7 +88,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Study by candlelight, ignoring everything else', 
           impact: 'desperation', 
           consequence: 'You pass the exam but your brother cries all night...',
-          effects: { education: -30, health: 20, stress: 35 }
+          effects: { education: -30, health: 20, stress: 35, money: 0 }
         },
         { 
           id: 'hospital', 
@@ -95,7 +96,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Take your brother to the free clinic', 
           impact: 'sacrifice', 
           consequence: 'You miss the exam. Your future slips away...',
-          effects: { education: 40, health: -30, stress: 25 }
+          effects: { education: 40, health: -30, stress: 25, money: 0 }
         },
         { 
           id: 'sleep', 
@@ -103,7 +104,7 @@ function Game({ isCarousel = false, swiper = null }) {
           text: 'Give up for tonight and just hold your brother', 
           impact: 'hopeless', 
           consequence: 'You both cry yourselves to sleep, wondering if tomorrow will be different...',
-          effects: { hunger: 10, health: 10, education: 20, stress: 40 }
+          effects: { hunger: 10, health: 10, education: 20, stress: 40, money: 0 }
         }
       ]
     }
@@ -165,13 +166,14 @@ function Game({ isCarousel = false, swiper = null }) {
     setSelectedOption(choice)
     setShowConsequence(true)
     
-    // Update consequences
+    // Update consequences and money
     setConsequences(prev => ({
       hunger: Math.min(100, Math.max(0, prev.hunger + (choice.effects.hunger || 0))),
       health: Math.min(100, Math.max(0, prev.health + (choice.effects.health || 0))),
       education: Math.min(100, Math.max(0, prev.education + (choice.effects.education || 0))),
       stress: Math.min(100, Math.max(0, prev.stress + (choice.effects.stress || 0)))
     }))
+    setMoney(prev => Math.max(0, prev + (choice.effects.money || 0)))
 
     // Show consequence for 2 seconds before moving on
     setTimeout(() => {
@@ -197,6 +199,7 @@ function Game({ isCarousel = false, swiper = null }) {
     setGameState(isCarousel ? 'choice1' : 'intro')
     setChoices([])
     setProgressBar(0)
+    setMoney(2)
     setConsequences({
       hunger: 0,
       health: 0,
@@ -246,6 +249,7 @@ function Game({ isCarousel = false, swiper = null }) {
         </div>
         
         <div className="choice-header">
+          <div className="money-tracker">💵 ${money}</div>
           <div className="time-badge">{timeOfDay}</div>
           <div className="stage-badge">Choice {stageNumber} of 3</div>
         </div>
