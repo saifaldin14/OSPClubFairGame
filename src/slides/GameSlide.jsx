@@ -58,18 +58,8 @@ function GameSlide({ swiper }) {
       </div>
 
       {/* Emphasis Box */}
-      <div className="emphasis-box">
-        <p className="emphasis-text">There are no "good" options. Just survival.</p>
-      </div>
+      <h1 className="cta-text">There are no "good" options, just survival.</h1>
 
-      {/* Warning Notice */}
-      <div className="intro-warning-modern">
-        <AlertTriangle size={20} />
-        <div className="warning-content">
-          <p className="warning-title">This experience may be emotionally challenging</p>
-          <p className="warning-subtitle">Every choice you make has real consequences</p>
-        </div>
-      </div>
 
       {/* CTA Button */}
       <button 
