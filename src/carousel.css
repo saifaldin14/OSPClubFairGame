@@ -8,6 +8,11 @@
 .main-swiper {
   width: 100%;
   height: 100vh;
+  outline: none;
+}
+
+.main-swiper:focus {
+  outline: none;
 }
 
 .swiper-slide {

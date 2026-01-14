@@ -19,7 +19,7 @@ function App() {
   const [swiperInstance, setSwiperInstance] = useState(null)
 
   return (
-    <div className="app carousel-app">
+    <div className="app carousel-app" tabIndex={0}>
       <Swiper
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         direction="horizontal"
@@ -30,6 +30,8 @@ function App() {
         }}
         keyboard={{
           enabled: true,
+          onlyInViewport: false,
+          pageUpDown: false,
         }}
         pagination={{
           clickable: true,
@@ -37,9 +39,17 @@ function App() {
         }}
         navigation={true}
         onSwiper={setSwiperInstance}
+        onSlideChange={(swiper) => {
+          // Prevent any automatic slide changes
+          swiper.allowSlidePrev = true
+          swiper.allowSlideNext = true
+        }}
         className="main-swiper"
         allowTouchMove={true}
-        nested={true}
+        preventInteractionOnTransition={false}
+        watchOverflow={true}
+        simulateTouch={false}
+        touchEventsTarget="container"
       >
         {/* Slide 1: OSP Intro */}
         <SwiperSlide>
