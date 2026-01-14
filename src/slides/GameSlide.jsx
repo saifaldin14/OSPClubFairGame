@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { User, AlertTriangle, Lightbulb } from 'lucide-react'
 import Game from '../pages/Game'
 
 function GameSlide({ swiper }) {
@@ -18,7 +19,7 @@ function GameSlide({ swiper }) {
 
   return (
     <div className="slide-container game-intro-slide">
-      <div className="game-illustration">👧🏽</div>
+      <div className="game-illustration"><User size={80} color="var(--accent-warm)" /></div>
       <h1 className="game-title">Walk in Amira's Shoes</h1>
       <p className="game-subtitle">Experience a day in the life of a 10-year-old orphan</p>
       
@@ -29,7 +30,7 @@ function GameSlide({ swiper }) {
       </div>
 
       <div className="intro-warning">
-        <p>⚠️ This experience may be emotionally challenging.</p>
+        <p><AlertTriangle size={16} style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} />This experience may be emotionally challenging.</p>
         <p>Every choice you make has real consequences.</p>
       </div>
 
@@ -40,8 +41,9 @@ function GameSlide({ swiper }) {
         Begin Amira's Day
       </button>
 
-      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p>💡 Use arrow keys or swipe to navigate between slides</p>
+      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+        <Lightbulb size={16} />
+        <p style={{ margin: 0 }}>Use arrow keys or swipe to navigate between slides</p>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import Card from '../components/Card'
+import { Heart, BookOpen, Hospital, Users, Gamepad2 } from 'lucide-react'
 
 function Home() {
   return (
@@ -30,22 +31,22 @@ function Home() {
             <Card 
               title="Orphan Sponsorship"
               description="Provide monthly support to orphans including food, clothing, education, and healthcare."
-              icon="💙"
+              icon={<Heart size={32} />}
             />
             <Card 
               title="Educational Programs"
               description="Ensure orphans have access to quality education and learning materials."
-              icon="📚"
+              icon={<BookOpen size={32} />}
             />
             <Card 
               title="Healthcare Support"
               description="Provide medical care, regular checkups, and essential healthcare services."
-              icon="🏥"
+              icon={<Hospital size={32} />}
             />
             <Card 
               title="Community Building"
               description="Create supportive communities where orphans can thrive and grow."
-              icon="🤝"
+              icon={<Users size={32} />}
             />
           </div>
         </div>
@@ -72,7 +73,7 @@ function Home() {
             Experience what it's like to be an orphan facing impossible choices every single day.
           </p>
           <div className="game-preview-card">
-            <div className="game-preview-icon">🕹️</div>
+            <div className="game-preview-icon"><Gamepad2 size={48} color="var(--accent-color)" /></div>
             <h3>"3 Choices" - Interactive Experience</h3>
             <p>A powerful 15-second game that shows the reality of daily decisions orphans must make.</p>
             <a href="/game" className="btn btn-primary">Try the Experience</a>

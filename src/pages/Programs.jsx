@@ -1,4 +1,5 @@
 import Card from '../components/Card'
+import { Heart, GraduationCap, Stethoscope, Moon, Wrench, Siren } from 'lucide-react'
 
 function Programs() {
   return (
@@ -16,7 +17,7 @@ function Programs() {
             <Card 
               title="Monthly Sponsorship"
               description="Sponsor an orphan with monthly support covering basic needs, education, and healthcare. Your consistent support creates lasting change."
-              icon="💝"
+              icon={<Heart size={32} />}
               details={[
                 "Food and nutrition",
                 "Clothing and necessities",
@@ -27,7 +28,7 @@ function Programs() {
             <Card 
               title="Education Fund"
               description="Provide orphans with access to quality education, school supplies, and tutoring to help them succeed academically."
-              icon="🎓"
+              icon={<GraduationCap size={32} />}
               details={[
                 "School tuition fees",
                 "Books and supplies",
@@ -38,7 +39,7 @@ function Programs() {
             <Card 
               title="Medical Care"
               description="Ensure orphans receive proper medical care, regular checkups, and emergency healthcare when needed."
-              icon="⚕️"
+              icon={<Stethoscope size={32} />}
               details={[
                 "Regular health checkups",
                 "Vaccinations",
@@ -49,7 +50,7 @@ function Programs() {
             <Card 
               title="Ramadan Support"
               description="Special program during Ramadan to provide iftar meals, new clothes, and Eid gifts for orphans."
-              icon="🌙"
+              icon={<Moon size={32} />}
               details={[
                 "Daily iftar meals",
                 "Eid clothing",
@@ -60,7 +61,7 @@ function Programs() {
             <Card 
               title="Vocational Training"
               description="Prepare older orphans for independence with vocational training and skill development programs."
-              icon="🛠️"
+              icon={<Wrench size={32} />}
               details={[
                 "Job skills training",
                 "Apprenticeship programs",
@@ -71,7 +72,7 @@ function Programs() {
             <Card 
               title="Emergency Relief"
               description="Rapid response to crises affecting orphans including natural disasters, conflicts, and emergencies."
-              icon="🆘"
+              icon={<Siren size={32} />}
               details={[
                 "Emergency shelter",
                 "Food and water",

@@ -1,3 +1,5 @@
+import { Check } from 'lucide-react'
+
 function Card({ title, description, icon, details }) {
   return (
     <div className="card">
@@ -7,7 +9,7 @@ function Card({ title, description, icon, details }) {
       {details && details.length > 0 && (
         <ul className="card-details">
           {details.map((detail, index) => (
-            <li key={index}>✓ {detail}</li>
+            <li key={index}><Check size={14} /> {detail}</li>
           ))}
         </ul>
       )}

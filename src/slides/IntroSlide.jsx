@@ -1,4 +1,5 @@
 import React from 'react'
+import { User, AlertTriangle, Lightbulb } from 'lucide-react'
 
 function IntroSlide({ swiper }) {
   const handleStart = () => {
@@ -9,7 +10,7 @@ function IntroSlide({ swiper }) {
 
   return (
     <div className="slide-container intro-slide">
-      <div className="game-illustration">👶🏽</div>
+      <div className="game-illustration"><User size={80} strokeWidth={1.5} /></div>
       <h1 className="game-title">Walk in Amira's Shoes</h1>
       <p className="game-subtitle">Experience a day in the life of a 10-year-old orphan</p>
       
@@ -20,7 +21,7 @@ function IntroSlide({ swiper }) {
       </div>
 
       <div className="intro-warning">
-        <p>⚠️ This experience may be emotionally challenging.</p>
+        <p><AlertTriangle size={16} /> This experience may be emotionally challenging.</p>
         <p>Every choice you make has real consequences.</p>
       </div>
 
@@ -32,7 +33,7 @@ function IntroSlide({ swiper }) {
       </button>
 
       <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p>💡 Use arrow keys or swipe to navigate between slides</p>
+        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
       </div>
     </div>
   )

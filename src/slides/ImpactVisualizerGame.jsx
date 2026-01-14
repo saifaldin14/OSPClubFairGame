@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Heart, Users, Utensils, BookOpen, Stethoscope, Pencil, Shirt, ArrowLeft } from 'lucide-react'
 
 function ImpactVisualizerGame({ swiper }) {
   const [donationAmount, setDonationAmount] = useState(100)
@@ -6,12 +7,12 @@ function ImpactVisualizerGame({ swiper }) {
 
   const impactData = {
     100: {
-      children: { count: 2, label: 'Children Sponsored', icon: '👧🏽', color: '#e8927c' },
-      meals: { count: 180, label: 'Meals Provided', icon: '🍽️', color: '#88b3e6' },
-      education: { count: 2, label: 'Months Education', icon: '📚', color: '#4a6fa5' },
-      healthcare: { count: 1, label: 'Health Checkups', icon: '🏥', color: '#6dd5a0' },
-      supplies: { count: 5, label: 'School Supply Kits', icon: '✏️', color: '#a8d4f0' },
-      clothing: { count: 4, label: 'Clothing Sets', icon: '👕', color: '#e8927c' }
+      children: { count: 2, label: 'Children Sponsored', Icon: Users, color: '#e8927c' },
+      meals: { count: 180, label: 'Meals Provided', Icon: Utensils, color: '#88b3e6' },
+      education: { count: 2, label: 'Months Education', Icon: BookOpen, color: '#4a6fa5' },
+      healthcare: { count: 1, label: 'Health Checkups', Icon: Stethoscope, color: '#6dd5a0' },
+      supplies: { count: 5, label: 'School Supply Kits', Icon: Pencil, color: '#a8d4f0' },
+      clothing: { count: 4, label: 'Clothing Sets', Icon: Shirt, color: '#e8927c' }
     }
   }
 
@@ -36,7 +37,7 @@ function ImpactVisualizerGame({ swiper }) {
       <div className="slide-container impact-visualizer-slide">
         <div className="impact-intro-content">
           <div className="intro-header">
-            <span className="intro-emoji">💝</span>
+            <span className="intro-icon"><Heart size={48} color="var(--accent-warm)" /></span>
             <h2 style={{ color: 'var(--accent-color)' }}>See Your Impact</h2>
             <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Choose a donation amount to see exactly how it helps children in need</p>
           </div>
@@ -63,7 +64,7 @@ function ImpactVisualizerGame({ swiper }) {
       <div className="impact-results-content">
         <div className="results-header">
           <button className="back-btn" onClick={() => setShowImpact(false)}>
-            ← Back
+            <ArrowLeft size={16} /> Back
           </button>
           <h2 style={{ color: 'var(--accent-color)' }}>Your ${donationAmount} Creates Real Change</h2>
         </div>
@@ -78,7 +79,9 @@ function ImpactVisualizerGame({ swiper }) {
                 animationDelay: `${index * 0.1}s`
               }}
             >
-              <div className="card-icon">{item.icon}</div>
+              <div className="card-icon">
+                {item.Icon && <item.Icon size={28} color={item.color} />}
+              </div>
               <div className="card-count" style={{ color: item.color }}>{item.count}</div>
               <div className="card-label">{item.label}</div>
             </div>

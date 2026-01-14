@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -42,7 +44,7 @@ function Contact() {
 
               <div className="contact-details">
                 <div className="contact-item">
-                  <div className="contact-icon">📧</div>
+                  <div className="contact-icon"><Mail size={24} /></div>
                   <div>
                     <h3>Email</h3>
                     <p>info@ospcharity.org</p>
@@ -50,7 +52,7 @@ function Contact() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="contact-icon">📞</div>
+                  <div className="contact-icon"><Phone size={24} /></div>
                   <div>
                     <h3>Phone</h3>
                     <p>+1 (555) 123-4567</p>
@@ -58,7 +60,7 @@ function Contact() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="contact-icon">📍</div>
+                  <div className="contact-icon"><MapPin size={24} /></div>
                   <div>
                     <h3>Address</h3>
                     <p>123 Charity Lane<br/>Community Center, Suite 100<br/>City, State 12345</p>
@@ -66,7 +68,7 @@ function Contact() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="contact-icon">🕐</div>
+                  <div className="contact-icon"><Clock size={24} /></div>
                   <div>
                     <h3>Office Hours</h3>
                     <p>Monday - Friday: 9:00 AM - 5:00 PM<br/>Saturday: 10:00 AM - 2:00 PM<br/>Sunday: Closed</p>

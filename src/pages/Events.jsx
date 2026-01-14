@@ -1,3 +1,13 @@
+import { PartyPopper, Moon, BookOpen, Footprints, Calendar, Clock, MapPin } from 'lucide-react'
+
+// Event icon mapping
+const eventIconMap = {
+  '🎉': PartyPopper,
+  '🌙': Moon,
+  '📚': BookOpen,
+  '🚶': Footprints
+}
+
 function Events() {
   const upcomingEvents = [
     {
@@ -7,7 +17,7 @@ function Events() {
       time: "6:00 PM - 10:00 PM",
       location: "Grand Ballroom, Community Center",
       description: "Join us for an evening of inspiration, dinner, and fundraising to support orphans worldwide.",
-      image: "🎉"
+      iconKey: '🎉'
     },
     {
       id: 2,
@@ -16,7 +26,7 @@ function Events() {
       time: "Sunset Daily",
       location: "Multiple Locations",
       description: "Volunteer to prepare and serve iftar meals to orphans during the blessed month of Ramadan.",
-      image: "🌙"
+      iconKey: '🌙'
     },
     {
       id: 3,
@@ -25,7 +35,7 @@ function Events() {
       time: "2:00 PM - 5:00 PM",
       location: "OSP Community Center",
       description: "Learn about orphan care, Islamic charity, and how to make a lasting impact.",
-      image: "📚"
+      iconKey: '📚'
     },
     {
       id: 4,
@@ -34,7 +44,7 @@ function Events() {
       time: "8:00 AM - 12:00 PM",
       location: "City Park",
       description: "Participate in our 5K charity walk to raise awareness and funds for orphan support programs.",
-      image: "🚶"
+      iconKey: '🚶'
     }
   ]
 
@@ -75,21 +85,24 @@ function Events() {
         <div className="container">
           <h2 className="section-title">Upcoming Events</h2>
           <div className="events-grid">
-            {upcomingEvents.map(event => (
-              <div key={event.id} className="event-card">
-                <div className="event-icon">{event.image}</div>
-                <div className="event-content">
-                  <h3 className="event-title">{event.title}</h3>
-                  <div className="event-details">
-                    <p className="event-date">📅 {event.date}</p>
-                    <p className="event-time">🕐 {event.time}</p>
-                    <p className="event-location">📍 {event.location}</p>
+            {upcomingEvents.map(event => {
+              const IconComponent = eventIconMap[event.iconKey] || PartyPopper
+              return (
+                <div key={event.id} className="event-card">
+                  <div className="event-icon"><IconComponent size={32} color="var(--accent-color)" /></div>
+                  <div className="event-content">
+                    <h3 className="event-title">{event.title}</h3>
+                    <div className="event-details">
+                      <p className="event-date"><Calendar size={14} /> {event.date}</p>
+                      <p className="event-time"><Clock size={14} /> {event.time}</p>
+                      <p className="event-location"><MapPin size={14} /> {event.location}</p>
+                    </div>
+                    <p className="event-description">{event.description}</p>
+                    <button className="btn btn-secondary">Register Now</button>
                   </div>
-                  <p className="event-description">{event.description}</p>
-                  <button className="btn btn-secondary">Register Now</button>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

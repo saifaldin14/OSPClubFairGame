@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
@@ -16,10 +17,10 @@ function Footer() {
               of orphans around the world through compassion and Islamic values.
             </p>
             <div className="footer-social">
-              <a href="#" className="social-icon" aria-label="Facebook">📘</a>
-              <a href="#" className="social-icon" aria-label="Twitter">🐦</a>
-              <a href="#" className="social-icon" aria-label="Instagram">📷</a>
-              <a href="#" className="social-icon" aria-label="LinkedIn">💼</a>
+              <a href="#" className="social-icon" aria-label="Facebook"><Facebook size={18} /></a>
+              <a href="#" className="social-icon" aria-label="Twitter"><Twitter size={18} /></a>
+              <a href="#" className="social-icon" aria-label="Instagram"><Instagram size={18} /></a>
+              <a href="#" className="social-icon" aria-label="LinkedIn"><Linkedin size={18} /></a>
             </div>
           </div>
 
@@ -46,9 +47,9 @@ function Footer() {
           <div className="footer-section">
             <h4 className="footer-heading">Contact Info</h4>
             <ul className="footer-contact">
-              <li>📧 info@ospcharity.org</li>
-              <li>📞 +1 (555) 123-4567</li>
-              <li>📍 123 Charity Lane<br/>Community Center<br/>City, State 12345</li>
+              <li><Mail size={14} /> info@ospcharity.org</li>
+              <li><Phone size={14} /> +1 (555) 123-4567</li>
+              <li><MapPin size={14} /> 123 Charity Lane<br/>Community Center<br/>City, State 12345</li>
             </ul>
           </div>
         </div>

@@ -1,4 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import { 
+  HandHeart, BookOpen, Apple, Shirt, Hospital, Pencil, Droplet, GraduationCap, 
+  Salad, MousePointerClick, Heart, Clock, Rocket, PartyPopper, Star, Sparkles
+} from 'lucide-react'
+
+// Icon mapping for children needs
+const needIconMap = {
+  "📚": BookOpen,
+  "🍎": Apple,
+  "🧥": Shirt,
+  "🏥": Hospital,
+  "✏️": Pencil,
+  "💧": Droplet,
+  "🎓": GraduationCap,
+  "🥗": Salad
+}
 
 function DonationGame({ swiper }) {
   const [gameState, setGameState] = useState('intro') // intro, playing, results
@@ -86,22 +102,22 @@ function DonationGame({ swiper }) {
     return (
       <div className="slide-container donation-game-slide">
         <div className="donation-game-intro">
-          <div className="game-icon">🤲</div>
+          <div className="game-icon"><HandHeart size={48} color="var(--accent-color)" /></div>
           <h2 className="game-title-main">The Giving Challenge</h2>
           <p className="game-description">
             Tap as fast as you can for 30 seconds to make donations!
           </p>
           <div className="game-rules">
             <div className="rule-item">
-              <span className="rule-emoji">👆</span>
+              <span className="rule-icon"><MousePointerClick size={24} /></span>
               <p>Each tap = $10 donation</p>
             </div>
             <div className="rule-item">
-              <span className="rule-emoji">💝</span>
+              <span className="rule-icon"><Heart size={24} /></span>
               <p>Every 5 donations helps a child</p>
             </div>
             <div className="rule-item">
-              <span className="rule-emoji">⏱️</span>
+              <span className="rule-icon"><Clock size={24} /></span>
               <p>You have 30 seconds</p>
             </div>
           </div>
@@ -112,7 +128,7 @@ function DonationGame({ swiper }) {
             </p>
           </div>
           <button className="btn btn-primary btn-large" onClick={handleStart}>
-            Start Challenge 🚀
+            Start Challenge <Rocket size={18} />
           </button>
         </div>
       </div>
@@ -126,7 +142,7 @@ function DonationGame({ swiper }) {
     return (
       <div className="slide-container donation-game-slide">
         <div className="donation-game-results">
-          <h2 className="results-title">Your Impact! 🎉</h2>
+          <h2 className="results-title">Your Impact! <PartyPopper size={24} /></h2>
           
           <div className="stats-grid">
             <div className="stat-box">
@@ -147,14 +163,17 @@ function DonationGame({ swiper }) {
             <div className="helped-children">
               <h3>You Made a Difference For:</h3>
               <div className="children-grid">
-                {childrenHelped.map((child, index) => (
-                  <div key={index} className="helped-child-card" style={{ borderColor: child.color }}>
-                    <div className="child-emoji">{child.emoji}</div>
-                    <div className="child-name">{child.name}</div>
-                    <div className="child-country">{child.country}</div>
-                    <div className="child-need">{child.need}</div>
-                  </div>
-                ))}
+                {childrenHelped.map((child, index) => {
+                  const ChildIcon = needIconMap[child.emoji] || Heart
+                  return (
+                    <div key={index} className="helped-child-card" style={{ borderColor: child.color }}>
+                      <div className="child-icon"><ChildIcon size={24} color={child.color} /></div>
+                      <div className="child-name">{child.name}</div>
+                      <div className="child-country">{child.country}</div>
+                      <div className="child-need">{child.need}</div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           )}
@@ -162,13 +181,13 @@ function DonationGame({ swiper }) {
           <div className="impact-message">
             <p className="message-text">
               {totalDonated >= 200 ? (
-                <>💫 Amazing! Your generosity can provide months of support for these children!</>
+                <><Sparkles size={16} /> Amazing! Your generosity can provide months of support for these children!</>
               ) : totalDonated >= 100 ? (
-                <>🌟 Great work! You've made a real difference in children's lives!</>
+                <><Star size={16} /> Great work! You've made a real difference in children's lives!</>
               ) : totalDonated >= 50 ? (
-                <>✨ Good effort! Every donation helps break the cycle of poverty!</>
+                <><Sparkles size={16} /> Good effort! Every donation helps break the cycle of poverty!</>
               ) : (
-                <>💝 Thank you! Even small donations make a big impact!</>
+                <><Heart size={16} /> Thank you! Even small donations make a big impact!</>
               )}
             </p>
           </div>
@@ -205,7 +224,7 @@ function DonationGame({ swiper }) {
       <div className="donation-game-playing">
         <div className="game-header-bar">
           <div className="timer-display">
-            <span className="timer-icon">⏱️</span>
+            <span className="timer-icon"><Clock size={16} /></span>
             <span className="timer-text">{timeLeft}s</span>
           </div>
           <div className="score-display">
@@ -221,7 +240,7 @@ function DonationGame({ swiper }) {
             onTouchStart={handleDonate}
           >
             <div className="button-content">
-              <div className="button-emoji">🤲</div>
+              <div className="button-icon"><HandHeart size={48} /></div>
               <div className="button-text">TAP TO DONATE!</div>
               <div className="button-amount">$10 per tap</div>
             </div>
@@ -239,7 +258,7 @@ function DonationGame({ swiper }) {
                 className="floating-heart"
                 style={{ left: heart.x, top: heart.y }}
               >
-                ❤️
+                <Heart size={20} fill="currentColor" />
               </div>
             ))}
           </button>
@@ -260,7 +279,7 @@ function DonationGame({ swiper }) {
         {childrenHelped.length > 0 && (
           <div className="recent-help">
             <div className="help-notification">
-              🎉 You just helped {childrenHelped[childrenHelped.length - 1].name} from {childrenHelped[childrenHelped.length - 1].country}!
+              <PartyPopper size={16} /> You just helped {childrenHelped[childrenHelped.length - 1].name} from {childrenHelped[childrenHelped.length - 1].country}!
             </div>
           </div>
         )}

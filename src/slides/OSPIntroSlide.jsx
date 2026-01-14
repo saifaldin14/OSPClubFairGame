@@ -1,4 +1,5 @@
 import React from 'react'
+import { Lightbulb } from 'lucide-react'
 
 function OSPIntroSlide({ swiper }) {
   const handleContinue = () => {
@@ -50,7 +51,7 @@ function OSPIntroSlide({ swiper }) {
       </div>
 
       <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p>💡 Use arrow keys or swipe to navigate between slides</p>
+        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
       </div>
     </div>
   )

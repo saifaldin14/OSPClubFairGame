@@ -1,3 +1,21 @@
+import { Backpack, Hospital, Moon, PartyPopper, Laptop, Circle, Utensils, Palette, Shirt, BookOpen, Users, Heart } from 'lucide-react'
+
+// Gallery icon mapping
+const galleryIconMap = {
+  '🎒': Backpack,
+  '🏥': Hospital,
+  '🌙': Moon,
+  '🎉': PartyPopper,
+  '💻': Laptop,
+  '⚽': Circle,
+  '🍽️': Utensils,
+  '🎨': Palette,
+  '🧥': Shirt,
+  '📚': BookOpen,
+  '🤝': Users,
+  '💚': Heart
+}
+
 function Gallery() {
   const galleryItems = [
     {
@@ -5,84 +23,84 @@ function Gallery() {
       category: "Education",
       title: "Back to School 2025",
       description: "Students receiving their new school supplies and backpacks",
-      emoji: "🎒"
+      iconKey: "🎒"
     },
     {
       id: 2,
       category: "Healthcare",
       title: "Medical Checkup Day",
       description: "Annual health screenings for orphans",
-      emoji: "🏥"
+      iconKey: "🏥"
     },
     {
       id: 3,
       category: "Events",
       title: "Ramadan Iftar",
       description: "Breaking fast together during Ramadan",
-      emoji: "🌙"
+      iconKey: "🌙"
     },
     {
       id: 4,
       category: "Events",
       title: "Eid Celebration",
       description: "Children celebrating Eid with new clothes and gifts",
-      emoji: "🎉"
+      iconKey: "🎉"
     },
     {
       id: 5,
       category: "Education",
       title: "Computer Lab",
       description: "Learning essential technology skills",
-      emoji: "💻"
+      iconKey: "💻"
     },
     {
       id: 6,
       category: "Community",
       title: "Sports Day",
       description: "Building friendships through sports and games",
-      emoji: "⚽"
+      iconKey: "⚽"
     },
     {
       id: 7,
       category: "Food Program",
       title: "Nutritious Meals",
       description: "Daily meal program providing healthy food",
-      emoji: "🍽️"
+      iconKey: "🍽️"
     },
     {
       id: 8,
       category: "Community",
       title: "Art Class",
       description: "Creative expression through art and crafts",
-      emoji: "🎨"
+      iconKey: "🎨"
     },
     {
       id: 9,
       category: "Events",
       title: "Winter Clothing Drive",
       description: "Distributing warm clothing for winter",
-      emoji: "🧥"
+      iconKey: "🧥"
     },
     {
       id: 10,
       category: "Education",
       title: "Library Reading Hour",
       description: "Encouraging literacy and love for reading",
-      emoji: "📚"
+      iconKey: "📚"
     },
     {
       id: 11,
       category: "Community",
       title: "Volunteer Day",
       description: "Community members volunteering their time",
-      emoji: "🤝"
+      iconKey: "🤝"
     },
     {
       id: 12,
       category: "Events",
       title: "Annual Fundraiser",
       description: "Community gathering to support our cause",
-      emoji: "💚"
+      iconKey: "💚"
     }
   ]
 
@@ -108,18 +126,21 @@ function Gallery() {
       <section className="section">
         <div className="container">
           <div className="gallery-grid">
-            {galleryItems.map(item => (
-              <div key={item.id} className="gallery-item">
-                <div className="gallery-image">
-                  <div className="gallery-emoji">{item.emoji}</div>
+            {galleryItems.map(item => {
+              const IconComponent = galleryIconMap[item.iconKey] || Heart
+              return (
+                <div key={item.id} className="gallery-item">
+                  <div className="gallery-image">
+                    <div className="gallery-icon"><IconComponent size={48} color="var(--accent-color)" /></div>
+                  </div>
+                  <div className="gallery-content">
+                    <div className="gallery-category">{item.category}</div>
+                    <h3 className="gallery-title">{item.title}</h3>
+                    <p className="gallery-description">{item.description}</p>
+                  </div>
                 </div>
-                <div className="gallery-content">
-                  <div className="gallery-category">{item.category}</div>
-                  <h3 className="gallery-title">{item.title}</h3>
-                  <p className="gallery-description">{item.description}</p>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

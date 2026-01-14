@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Lock } from 'lucide-react'
 
 function Donate() {
   const [amount, setAmount] = useState('')
@@ -132,7 +133,7 @@ function Donate() {
                 </button>
 
                 <p className="form-note">
-                  🔒 Your donation is secure and tax-deductible. 100% of your donation 
+                  <Lock size={14} /> Your donation is secure and tax-deductible. 100% of your donation 
                   goes directly to supporting orphans.
                 </p>
               </form>

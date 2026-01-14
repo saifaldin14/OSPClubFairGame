@@ -1,4 +1,23 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { 
+  Sandwich, BookOpen, Pill, HandHeart, Paintbrush, Frown, 
+  Book, Stethoscope, Moon, DollarSign, AlertCircle,
+  GraduationCap, Thermometer, Star, Heart, HeartCrack,
+  Share2, MessageCircle
+} from 'lucide-react'
+
+// Icon mapping for choices
+const iconMap = {
+  food: Sandwich,
+  school: BookOpen,
+  medicine: Pill,
+  beg: HandHeart,
+  work: Paintbrush,
+  endure: Frown,
+  study: Book,
+  hospital: Stethoscope,
+  sleep: Moon
+}
 
 function Game({ isCarousel = false, swiper = null }) {
   const [gameState, setGameState] = useState(isCarousel ? 'choice1' : 'intro') // intro, choice1, choice2, choice3, end
@@ -22,7 +41,6 @@ function Game({ isCarousel = false, swiper = null }) {
       options: [
         { 
           id: 'food', 
-          emoji: '🍞', 
           text: 'Use your $2 to buy bread for today', 
           impact: 'hunger', 
           consequence: 'You eat, but school costs $1...',
@@ -30,7 +48,6 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'school', 
-          emoji: '📚', 
           text: 'Save money for school fees due tomorrow', 
           impact: 'education', 
           consequence: 'Your stomach growls through the morning...',
@@ -38,7 +55,6 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'medicine', 
-          emoji: '💊', 
           text: 'Buy medicine for your younger brother\'s fever', 
           impact: 'health', 
           consequence: 'He needs you, but you both go hungry...',
@@ -53,7 +69,6 @@ function Game({ isCarousel = false, swiper = null }) {
       options: [
         { 
           id: 'beg', 
-          emoji: '🙏', 
           text: 'Ask a classmate to share their food', 
           impact: 'dignity', 
           consequence: 'They say yes, but you see the pity in their eyes...',
@@ -61,7 +76,6 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'work', 
-          emoji: '🧹', 
           text: 'Leave school to work at the market', 
           impact: 'labor', 
           consequence: 'You earn $3, but miss the lesson you needed...',
@@ -69,7 +83,6 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'endure', 
-          emoji: '😔', 
           text: 'Push through the pain and stay in class', 
           impact: 'suffering', 
           consequence: 'You collapse during recess. The nurse sends you home...',
@@ -84,7 +97,6 @@ function Game({ isCarousel = false, swiper = null }) {
       options: [
         { 
           id: 'study', 
-          emoji: '📖', 
           text: 'Study by candlelight, ignoring everything else', 
           impact: 'desperation', 
           consequence: 'You pass the exam but your brother cries all night...',
@@ -92,7 +104,6 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'hospital', 
-          emoji: '🏥', 
           text: 'Take your brother to the free clinic', 
           impact: 'sacrifice', 
           consequence: 'You miss the exam. Your future slips away...',
@@ -100,63 +111,12 @@ function Game({ isCarousel = false, swiper = null }) {
         },
         { 
           id: 'sleep', 
-          emoji: '😢', 
           text: 'Give up for tonight and just hold your brother', 
           impact: 'hopeless', 
           consequence: 'You both cry yourselves to sleep, wondering if tomorrow will be different...',
           effects: { hunger: 10, health: 10, education: 20, stress: 40, money: 0 }
         }
       ]
-    }
-  }
-
-  const getEndMessage = () => {
-    const impacts = choices.map(c => c.impact)
-    const choiceTexts = choices.map(c => c.text)
-    
-    // Create personalized ending based on the journey
-    if (impacts.includes('health') && impacts.includes('sacrifice')) {
-      return {
-        title: "You Put Family First",
-        message: "You chose your brother over everything else. The medicine helped, but you failed the exam. Next year, you'll have to work full-time. Your dreams of becoming a teacher fade away. Your brother will grow up knowing you gave up your future for him.",
-        reality: "6,000 children die every day from preventable diseases because their families can't afford basic healthcare.",
-        hope: "With just $50/month, you could sponsor a child and break this cycle."
-      }
-    } else if (impacts.includes('education') && impacts.includes('desperation')) {
-      return {
-        title: "You Fought for Your Education",
-        message: "You passed the exam by staying up all night, ignoring your brother's cries. The next morning, his fever broke—but he'll never forget that night. Neither will you. The guilt weighs heavier than any textbook.",
-        reality: "61 million children worldwide are denied education, not because they don't want to learn, but because survival comes first.",
-        hope: "Your support can give a child both education AND the security to be a kid."
-      }
-    } else if (impacts.includes('dignity')) {
-      return {
-        title: "You Swallowed Your Pride",
-        message: "Asking for food hurt more than the hunger. Every day, you see the way people look at you—like you're invisible, or worse, a burden. You're not a charity case. You're a 10-year-old girl who wants to laugh, play, and dream. But survival strips away your childhood, one humiliating moment at a time.",
-        reality: "Orphans aren't just hungry for food—they're starving for dignity, hope, and a sense of belonging.",
-        hope: "You can restore a child's dignity and give them a reason to dream again."
-      }
-    } else if (impacts.includes('labor') && impacts.includes('suffering')) {
-      return {
-        title: "You Became an Adult at 10",
-        message: "While your classmates learned fractions, you learned how to negotiate with shop owners. While they played, you carried heavy boxes. Your hands are rough, your back aches, and you're only 10. Childhood isn't something you get to have—it's something you watch from the outside.",
-        reality: "152 million children are trapped in child labor, robbed of their childhood and their future.",
-        hope: "Together, we can give children back their right to be children."
-      }
-    } else if (impacts.includes('hopeless')) {
-      return {
-        title: "You Gave Up Tonight",
-        message: "Sometimes, the weight is too heavy. You held your brother, and both of you cried. No exam, no food, no plan—just two children alone in the dark, wondering if anyone cares. Tomorrow will come, and you'll have to make impossible choices all over again. This is your life now.",
-        reality: "150+ million orphans wake up every day not knowing if they'll eat, learn, or survive.",
-        hope: "But you can be the answer to their prayers. You can be the reason they don't give up."
-      }
-    } else {
-      return {
-        title: "No Choice Was Right",
-        message: "Every decision came at a cost. Feed yourself, neglect your brother. Help your brother, fail school. Work for money, lose education. There were no good options—only impossible choices that crush your spirit a little more each day. You're 10, but you feel ancient.",
-        reality: "This isn't a game. This is the daily reality for millions of children right now.",
-        hope: "Your donation can break this cycle and give a child a real childhood."
-      }
     }
   }
 
@@ -249,7 +209,7 @@ function Game({ isCarousel = false, swiper = null }) {
         </div>
         
         <div className="choice-header">
-          <div className="money-tracker">💵 ${money}</div>
+          <div className="money-tracker"><DollarSign size={16} /> ${money}</div>
           <div className="time-badge">{timeOfDay}</div>
           <div className="stage-badge">Choice {stageNumber} of 3</div>
         </div>
@@ -257,25 +217,25 @@ function Game({ isCarousel = false, swiper = null }) {
         {/* Consequence Meters */}
         <div className="consequence-meters">
           <div className="meter">
-            <span className="meter-label">😔 Stress</span>
+            <span className="meter-label"><AlertCircle size={14} /> Stress</span>
             <div className="meter-bar">
               <div className="meter-fill stress" style={{ width: `${consequences.stress}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">😫 Hunger</span>
+            <span className="meter-label"><Frown size={14} /> Hunger</span>
             <div className="meter-bar">
               <div className="meter-fill hunger" style={{ width: `${consequences.hunger}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">📚 Education Loss</span>
+            <span className="meter-label"><GraduationCap size={14} /> Education Loss</span>
             <div className="meter-bar">
               <div className="meter-fill education" style={{ width: `${consequences.education}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">🤒 Health Issues</span>
+            <span className="meter-label"><Thermometer size={14} /> Health Issues</span>
             <div className="meter-bar">
               <div className="meter-fill health" style={{ width: `${consequences.health}%` }}></div>
             </div>
@@ -291,27 +251,34 @@ function Game({ isCarousel = false, swiper = null }) {
         {showConsequence && selectedOption && (
           <div className="consequence-popup">
             <div className="consequence-content">
-              <div className="consequence-emoji">{selectedOption.emoji}</div>
+              <div className="consequence-icon">
+                {iconMap[selectedOption.id] && React.createElement(iconMap[selectedOption.id], { size: 32, color: 'var(--accent-color)' })}
+              </div>
               <p className="consequence-text">{selectedOption.consequence}</p>
             </div>
           </div>
         )}
         
         <div className="choice-grid">
-          {data.options.map((option) => (
-            <button
-              key={option.id}
-              className={`choice-button ${selectedOption?.id === option.id ? 'selected' : ''} ${showConsequence ? 'disabled' : ''}`}
-              onClick={() => !showConsequence && handleChoice(option, stage)}
-              disabled={showConsequence}
-            >
-              <span className="choice-emoji">{option.emoji}</span>
-              <div className="choice-content">
-                <span className="choice-text">{option.text}</span>
-                <span className="choice-hint">{option.consequence}</span>
-              </div>
-            </button>
-          ))}
+          {data.options.map((option) => {
+            const IconComponent = iconMap[option.id]
+            return (
+              <button
+                key={option.id}
+                className={`choice-button ${selectedOption?.id === option.id ? 'selected' : ''} ${showConsequence ? 'disabled' : ''}`}
+                onClick={() => !showConsequence && handleChoice(option, stage)}
+                disabled={showConsequence}
+              >
+                <span className="choice-icon">
+                  {IconComponent && <IconComponent size={24} />}
+                </span>
+                <div className="choice-content">
+                  <span className="choice-text">{option.text}</span>
+                  <span className="choice-hint">{option.consequence}</span>
+                </div>
+              </button>
+            )
+          })}
         </div>
         
         <div className="choice-instruction">
@@ -324,22 +291,24 @@ function Game({ isCarousel = false, swiper = null }) {
   const renderEnd = () => {
     const totalConsequences = consequences.stress + consequences.hunger + consequences.education + consequences.health
     let endingMessage = ''
-    let endingEmoji = ''
+    let EndingIcon = Star
 
     if (totalConsequences <= 150) {
       endingMessage = "Against all odds, Amira found moments of light in her difficult day. She made thoughtful choices that protected her wellbeing as much as possible. But even on her 'best' days, she still faces impossible decisions that no child should have to make."
-      endingEmoji = '🌟'
+      EndingIcon = Star
     } else if (totalConsequences <= 250) {
       endingMessage = "Amira's day was filled with difficult compromises. She sacrificed her health for education, or her education for food. Every choice had a cost, and by the end of the day, the weight of these decisions shows in her tired eyes."
-      endingEmoji = '😔'
+      EndingIcon = Frown
     } else {
       endingMessage = "Amira's day was overwhelming. The choices she had to make left her hungry, exhausted, and falling further behind. This is the reality for millions of children—where survival comes at the cost of their future."
-      endingEmoji = '💔'
+      EndingIcon = HeartCrack
     }
 
     return (
       <div className="game-screen end-screen">
-        <div className="end-emoji">{endingEmoji}</div>
+        <div className="end-icon">
+          <EndingIcon size={48} color="var(--accent-color)" />
+        </div>
         <h2 className="end-title">Amira's Day Ends...</h2>
         <p className="end-message">{endingMessage}</p>
 
@@ -347,25 +316,25 @@ function Game({ isCarousel = false, swiper = null }) {
         <div className="end-consequences">
           <h3>The Weight of Her Choices:</h3>
           <div className="meter">
-            <span className="meter-label">😔 Stress: {consequences.stress}%</span>
+            <span className="meter-label"><AlertCircle size={14} /> Stress: {consequences.stress}%</span>
             <div className="meter-bar">
               <div className="meter-fill stress" style={{ width: `${consequences.stress}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">😫 Hunger: {consequences.hunger}%</span>
+            <span className="meter-label"><Frown size={14} /> Hunger: {consequences.hunger}%</span>
             <div className="meter-bar">
               <div className="meter-fill hunger" style={{ width: `${consequences.hunger}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">📚 Education Lost: {consequences.education}%</span>
+            <span className="meter-label"><GraduationCap size={14} /> Education Lost: {consequences.education}%</span>
             <div className="meter-bar">
               <div className="meter-fill education" style={{ width: `${consequences.education}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label">🤒 Health Problems: {consequences.health}%</span>
+            <span className="meter-label"><Thermometer size={14} /> Health Problems: {consequences.health}%</span>
             <div className="meter-bar">
               <div className="meter-fill health" style={{ width: `${consequences.health}%` }}></div>
             </div>
@@ -380,12 +349,17 @@ function Game({ isCarousel = false, swiper = null }) {
         <div className="your-choices">
           <h4>Your journey as Amira:</h4>
           <div className="choices-list">
-            {choices.map((choice, index) => (
-              <div key={index} className="choice-recap">
-                <span className="recap-emoji">{choice.emoji}</span>
-                <span className="recap-text">{choice.text}</span>
-              </div>
-            ))}
+            {choices.map((choice, index) => {
+              const IconComponent = iconMap[choice.id]
+              return (
+                <div key={index} className="choice-recap">
+                  <span className="recap-icon">
+                    {IconComponent && <IconComponent size={18} />}
+                  </span>
+                  <span className="recap-text">{choice.text}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -394,7 +368,7 @@ function Game({ isCarousel = false, swiper = null }) {
             className="btn btn-primary btn-large"
             onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
           >
-            💚 Sponsor a Child Like Amira
+            <Heart size={18} /> Sponsor a Child Like Amira
           </button>
           <button 
             className="btn btn-secondary"
@@ -407,8 +381,8 @@ function Game({ isCarousel = false, swiper = null }) {
         <div className="share-section">
           <p className="share-text">This game opened your eyes. Share it to open others':</p>
           <div className="share-buttons">
-            <button className="share-btn">📱 Share on Social Media</button>
-            <button className="share-btn">💬 Tell Your Friends</button>
+            <button className="share-btn"><Share2 size={16} /> Share on Social Media</button>
+            <button className="share-btn"><MessageCircle size={16} /> Tell Your Friends</button>
           </div>
         </div>
       </div>

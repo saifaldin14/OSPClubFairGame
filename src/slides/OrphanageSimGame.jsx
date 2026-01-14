@@ -1,4 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import { 
+  Snowflake, Hospital, BookOpen, Apple, Baby, Briefcase, Search, Gift,
+  DollarSign, Scale, BarChart3, Target, Home, Smile, Heart, Rocket,
+  Star, ThumbsUp, Frown, HeartCrack, CheckCircle, XCircle, Loader
+} from 'lucide-react'
+
+// Icon mapping for events
+const eventIconMap = {
+  '❄️': Snowflake,
+  '🏥': Hospital,
+  '📚': BookOpen,
+  '🍎': Apple,
+  '👶': Baby,
+  '💼': Briefcase,
+  '🔍': Search,
+  '🎁': Gift
+}
 
 function OrphanageSimGame({ swiper }) {
   const [gameState, setGameState] = useState('intro') // intro, playing, event, results
@@ -211,11 +228,11 @@ function OrphanageSimGame({ swiper }) {
 
   const checkResourceLevels = () => {
     const warnings = []
-    if (resources.funds < 200) warnings.push("💰 Funds critically low!")
-    if (resources.food < 20) warnings.push("🍎 Food shortage!")
-    if (resources.health < 30) warnings.push("🏥 Health declining!")
-    if (resources.education < 30) warnings.push("📚 Education suffering!")
-    if (resources.happiness < 30) warnings.push("😢 Children unhappy!")
+    if (resources.funds < 200) warnings.push({ icon: DollarSign, text: "Funds critically low!" })
+    if (resources.food < 20) warnings.push({ icon: Apple, text: "Food shortage!" })
+    if (resources.health < 30) warnings.push({ icon: Hospital, text: "Health declining!" })
+    if (resources.education < 30) warnings.push({ icon: BookOpen, text: "Education suffering!" })
+    if (resources.happiness < 30) warnings.push({ icon: Frown, text: "Children unhappy!" })
     
     if (warnings.length > 0 && !showNotification) {
       setShowNotification(warnings[0])
@@ -267,7 +284,7 @@ function OrphanageSimGame({ swiper }) {
     return (
       <div className="slide-container orphanage-sim-slide">
         <div className="sim-intro">
-          <div className="sim-icon">🏠</div>
+          <div className="sim-icon"><Home size={48} color="var(--accent-color)" /></div>
           <h2 className="sim-title">Orphanage Manager Simulation</h2>
           <p className="sim-description">
             You run an orphanage caring for vulnerable children. Make tough decisions over 12 months 
@@ -276,19 +293,19 @@ function OrphanageSimGame({ swiper }) {
           
           <div className="sim-features">
             <div className="feature-item">
-              <span className="feature-emoji">💰</span>
+              <span className="feature-icon"><DollarSign size={24} /></span>
               <p>Manage Limited Budget</p>
             </div>
             <div className="feature-item">
-              <span className="feature-emoji">⚖️</span>
+              <span className="feature-icon"><Scale size={24} /></span>
               <p>Balance Multiple Needs</p>
             </div>
             <div className="feature-item">
-              <span className="feature-emoji">📊</span>
+              <span className="feature-icon"><BarChart3 size={24} /></span>
               <p>Face Real Challenges</p>
             </div>
             <div className="feature-item">
-              <span className="feature-emoji">🎯</span>
+              <span className="feature-icon"><Target size={24} /></span>
               <p>Make Impactful Decisions</p>
             </div>
           </div>
@@ -296,11 +313,11 @@ function OrphanageSimGame({ swiper }) {
           <div className="starting-resources">
             <h3>Starting Resources:</h3>
             <div className="resource-preview">
-              <span>💰 Funds: $1,000</span>
-              <span>🍎 Food: 50%</span>
-              <span>📚 Education: 50%</span>
-              <span>🏥 Health: 50%</span>
-              <span>😊 Happiness: 50%</span>
+              <span><DollarSign size={14} /> Funds: $1,000</span>
+              <span><Apple size={14} /> Food: 50%</span>
+              <span><BookOpen size={14} /> Education: 50%</span>
+              <span><Hospital size={14} /> Health: 50%</span>
+              <span><Smile size={14} /> Happiness: 50%</span>
             </div>
           </div>
 
@@ -314,7 +331,7 @@ function OrphanageSimGame({ swiper }) {
           </div>
 
           <button className="btn btn-primary btn-large" onClick={startGame}>
-            Start Managing 🚀
+            Start Managing <Rocket size={18} />
           </button>
         </div>
       </div>
@@ -322,6 +339,7 @@ function OrphanageSimGame({ swiper }) {
   }
 
   if (gameState === 'event') {
+    const EventIcon = eventIconMap[currentEvent.icon] || Gift
     return (
       <div className="slide-container orphanage-sim-slide">
         <div className="sim-event">
@@ -331,7 +349,7 @@ function OrphanageSimGame({ swiper }) {
           </div>
 
           <div className="event-card">
-            <div className="event-icon">{currentEvent.icon}</div>
+            <div className="event-icon"><EventIcon size={40} color="var(--accent-color)" /></div>
             <h3 className="event-title">{currentEvent.title}</h3>
             <p className="event-description">{currentEvent.description}</p>
           </div>
@@ -360,28 +378,28 @@ function OrphanageSimGame({ swiper }) {
 
           <div className="current-resources">
             <div className="resource-bar">
-              <span className="resource-label">🍎 Food</span>
+              <span className="resource-label"><Apple size={14} /> Food</span>
               <div className="bar-container">
                 <div className="bar-fill" style={{ width: `${resources.food}%`, backgroundColor: '#e24a4a' }}></div>
               </div>
               <span className="resource-value">{resources.food}%</span>
             </div>
             <div className="resource-bar">
-              <span className="resource-label">📚 Education</span>
+              <span className="resource-label"><BookOpen size={14} /> Education</span>
               <div className="bar-container">
                 <div className="bar-fill" style={{ width: `${resources.education}%`, backgroundColor: '#4a90e2' }}></div>
               </div>
               <span className="resource-value">{resources.education}%</span>
             </div>
             <div className="resource-bar">
-              <span className="resource-label">🏥 Health</span>
+              <span className="resource-label"><Hospital size={14} /> Health</span>
               <div className="bar-container">
                 <div className="bar-fill" style={{ width: `${resources.health}%`, backgroundColor: '#4ae2a2' }}></div>
               </div>
               <span className="resource-value">{resources.health}%</span>
             </div>
             <div className="resource-bar">
-              <span className="resource-label">😊 Happiness</span>
+              <span className="resource-label"><Smile size={14} /> Happiness</span>
               <div className="bar-container">
                 <div className="bar-fill" style={{ width: `${resources.happiness}%`, backgroundColor: '#e2a24a' }}></div>
               </div>
@@ -391,7 +409,7 @@ function OrphanageSimGame({ swiper }) {
 
           {showNotification && (
             <div className="warning-notification">
-              {showNotification}
+              {React.createElement(showNotification.icon, { size: 16 })} {showNotification.text}
             </div>
           )}
         </div>
@@ -402,9 +420,17 @@ function OrphanageSimGame({ swiper }) {
   if (gameState === 'results') {
     const score = calculateScore()
     const survived = resources.funds > 0
-    const rating = survived 
-      ? (score >= 80 ? "Exceptional Management! 🌟" : score >= 60 ? "Strong Leadership! 👏" : score >= 40 ? "Good Effort 💪" : "Difficult Choices 😔")
-      : "Out of Funds - Orphanage Closed 💔"
+    let RatingIcon = Star
+    let ratingText = ""
+    if (survived) {
+      if (score >= 80) { RatingIcon = Star; ratingText = "Exceptional Management!" }
+      else if (score >= 60) { RatingIcon = ThumbsUp; ratingText = "Strong Leadership!" }
+      else if (score >= 40) { RatingIcon = Heart; ratingText = "Good Effort" }
+      else { RatingIcon = Frown; ratingText = "Difficult Choices" }
+    } else {
+      RatingIcon = HeartCrack
+      ratingText = "Out of Funds - Orphanage Closed"
+    }
 
     return (
       <div className="slide-container orphanage-sim-slide">
@@ -413,43 +439,45 @@ function OrphanageSimGame({ swiper }) {
           
           <div className="final-score">
             <div className="score-number">{score}</div>
-            <div className="score-rating">{rating}</div>
-            <div className="score-status">{survived ? "✅ Orphanage Sustained" : "❌ Ran Out of Funds"}</div>
+            <div className="score-rating"><RatingIcon size={24} /> {ratingText}</div>
+            <div className="score-status">
+              {survived ? <><CheckCircle size={16} /> Orphanage Sustained</> : <><XCircle size={16} /> Ran Out of Funds</>}
+            </div>
           </div>
 
           <div className="final-resources">
             <h3>Final Status (Month {month}/12):</h3>
             <div className="resources-grid">
               <div className="resource-final">
-                <div className="resource-icon">💰</div>
+                <div className="resource-icon"><DollarSign size={24} /></div>
                 <div className="resource-info">
                   <span className="resource-name">Funds</span>
                   <span className="resource-final-value">${resources.funds}</span>
                 </div>
               </div>
               <div className="resource-final">
-                <div className="resource-icon">🍎</div>
+                <div className="resource-icon"><Apple size={24} /></div>
                 <div className="resource-info">
                   <span className="resource-name">Food</span>
                   <span className="resource-final-value">{resources.food}%</span>
                 </div>
               </div>
               <div className="resource-final">
-                <div className="resource-icon">📚</div>
+                <div className="resource-icon"><BookOpen size={24} /></div>
                 <div className="resource-info">
                   <span className="resource-name">Education</span>
                   <span className="resource-final-value">{resources.education}%</span>
                 </div>
               </div>
               <div className="resource-final">
-                <div className="resource-icon">🏥</div>
+                <div className="resource-icon"><Hospital size={24} /></div>
                 <div className="resource-info">
                   <span className="resource-name">Health</span>
                   <span className="resource-final-value">{resources.health}%</span>
                 </div>
               </div>
               <div className="resource-final">
-                <div className="resource-icon">😊</div>
+                <div className="resource-icon"><Smile size={24} /></div>
                 <div className="resource-info">
                   <span className="resource-name">Happiness</span>
                   <span className="resource-final-value">{resources.happiness}%</span>
@@ -500,7 +528,7 @@ function OrphanageSimGame({ swiper }) {
   return (
     <div className="slide-container orphanage-sim-slide">
       <div className="sim-loading">
-        <div className="loading-spinner">⏳</div>
+        <div className="loading-spinner"><Loader size={32} className="spin" /></div>
         <p>Preparing next challenge...</p>
       </div>
     </div>

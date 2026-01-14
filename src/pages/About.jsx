@@ -1,3 +1,5 @@
+import { HandHeart, Heart, Globe, Target } from 'lucide-react'
+
 function About() {
   return (
     <div className="page about-page">
@@ -25,19 +27,19 @@ function About() {
           <h2 className="section-title">Our Values</h2>
           <div className="values-grid">
             <div className="value-item">
-              <h3>🤲 Faith & Compassion</h3>
+              <h3><HandHeart size={20} /> Faith & Compassion</h3>
               <p>Guided by Islamic principles of mercy and kindness</p>
             </div>
             <div className="value-item">
-              <h3>💚 Transparency</h3>
+              <h3><Heart size={20} /> Transparency</h3>
               <p>Open and honest in all our operations and donations</p>
             </div>
             <div className="value-item">
-              <h3>🌍 Global Reach</h3>
+              <h3><Globe size={20} /> Global Reach</h3>
               <p>Supporting orphans across continents and communities</p>
             </div>
             <div className="value-item">
-              <h3>🎯 Impact Focused</h3>
+              <h3><Target size={20} /> Impact Focused</h3>
               <p>Every donation directly improves a child's life</p>
             </div>
           </div>
