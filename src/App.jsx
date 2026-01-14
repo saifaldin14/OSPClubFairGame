@@ -4,7 +4,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules'
 import OSPIntroSlide from './slides/OSPIntroSlide'
 import GameSlide from './slides/GameSlide'
 import OrphanageSimGame from './slides/OrphanageSimGame'
-import PlaceholderSlide from './slides/PlaceholderSlide'
+import ImpactVisualizerGame from './slides/ImpactVisualizerGame'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -56,13 +56,9 @@ function App() {
           <OrphanageSimGame swiper={swiperInstance} />
         </SwiperSlide>
 
-        {/* Slide 4: Placeholder */}
+        {/* Slide 4: Impact Visualizer Game */}
         <SwiperSlide>
-          <PlaceholderSlide 
-            title="Get Involved" 
-            subtitle="Make a difference today"
-            slideNumber={4}
-          />
+          <ImpactVisualizerGame swiper={swiperInstance} />
         </SwiperSlide>
       </Swiper>
     </div>

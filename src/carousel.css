@@ -98,7 +98,7 @@
 .game-intro-slide {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   max-width: 900px;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
 }
 
 /* Game Slide Specific */
