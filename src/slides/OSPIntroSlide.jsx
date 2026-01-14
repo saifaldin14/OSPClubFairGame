@@ -50,9 +50,7 @@ function OSPIntroSlide({ swiper }) {
         </button>
       </div>
 
-      <div className="nav-hint">
-        <p><Lightbulb size={16} /> Use arrow keys or swipe to navigate between slides</p>
-      </div>
+   
     </div>
   )
 }

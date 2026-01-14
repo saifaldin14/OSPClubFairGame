@@ -453,7 +453,7 @@
   margin-top: var(--spacing-xl);
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   opacity: 0.75;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--bg-navy);
   display: flex;
   align-items: center;
   justify-content: center;
