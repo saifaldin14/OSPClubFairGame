@@ -50,8 +50,8 @@ function OSPIntroSlide({ swiper }) {
         </button>
       </div>
 
-      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
+      <div className="nav-hint">
+        <p><Lightbulb size={16} /> Use arrow keys or swipe to navigate between slides</p>
       </div>
     </div>
   )
