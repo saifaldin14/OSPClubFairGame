@@ -209,7 +209,7 @@ function Game({ isCarousel = false, swiper = null }) {
         </div>
         
         <div className="choice-header">
-          <div className="money-tracker"><DollarSign size={16} /> ${money}</div>
+          <div className="money-tracker"> ${money}</div>
           <div className="time-badge">{timeOfDay}</div>
           <div className="stage-badge">Choice {stageNumber} of 3</div>
         </div>
