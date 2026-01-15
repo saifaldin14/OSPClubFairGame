@@ -366,7 +366,7 @@ function Game({ isCarousel = false, swiper = null }) {
         <div className="end-actions">
           <button 
             className="share-btn"
-            onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
+            onClick={() => window.open('https://wusa.ca/product/uw-orphan-sponsorship-program/', '_blank')}
           >
             <Heart size={18} margin-right={20} /> Sponsor a Child Like Amira
           </button>
