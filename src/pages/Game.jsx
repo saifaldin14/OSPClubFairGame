@@ -209,7 +209,7 @@ function Game({ isCarousel = false, swiper = null }) {
         </div>
         
         <div className="choice-header">
-          <div className="money-tracker"><DollarSign size={16} /> ${money}</div>
+          <div className="money-tracker"> ${money}</div>
           <div className="time-badge">{timeOfDay}</div>
           <div className="stage-badge">Choice {stageNumber} of 3</div>
         </div>
@@ -316,25 +316,25 @@ function Game({ isCarousel = false, swiper = null }) {
         <div className="end-consequences">
           <h3>The Weight of Her Choices:</h3>
           <div className="meter">
-            <span className="meter-label"><AlertCircle size={14} /> Stress: {consequences.stress}%</span>
+            <span className="meter-label"><AlertCircle margin-right={10} size={14} /> Stress: {consequences.stress}%</span>
             <div className="meter-bar">
               <div className="meter-fill stress" style={{ width: `${consequences.stress}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label"><Frown size={14} /> Hunger: {consequences.hunger}%</span>
+            <span className="meter-label"><Frown margin-right={10} size={14} /> Hunger: {consequences.hunger}%</span>
             <div className="meter-bar">
               <div className="meter-fill hunger" style={{ width: `${consequences.hunger}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label"><GraduationCap size={14} /> Education Lost: {consequences.education}%</span>
+            <span className="meter-label"><GraduationCap margin-right={10} size={14} /> Education Lost: {consequences.education}%</span>
             <div className="meter-bar">
               <div className="meter-fill education" style={{ width: `${consequences.education}%` }}></div>
             </div>
           </div>
           <div className="meter">
-            <span className="meter-label"><Thermometer size={14} /> Health Problems: {consequences.health}%</span>
+            <span className="meter-label"><Thermometer margin-right={10} size={14} /> Health Problems: {consequences.health}%</span>
             <div className="meter-bar">
               <div className="meter-fill health" style={{ width: `${consequences.health}%` }}></div>
             </div>
@@ -365,13 +365,13 @@ function Game({ isCarousel = false, swiper = null }) {
 
         <div className="end-actions">
           <button 
-            className="btn btn-primary btn-large"
+            className="share-btn"
             onClick={() => window.open('https://uwosp.ca/donate', '_blank')}
           >
-            <Heart size={18} /> Sponsor a Child Like Amira
+            <Heart size={18} margin-right={20} /> Sponsor a Child Like Amira
           </button>
           <button 
-            className="btn btn-secondary"
+            className="share-btn"
             onClick={resetGame}
           >
             Experience Again

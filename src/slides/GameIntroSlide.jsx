@@ -32,9 +32,6 @@ function GameIntroSlide({ swiper }) {
         Begin Amira's Day
       </button>
 
-      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
-      </div>
     </div>
   )
 }

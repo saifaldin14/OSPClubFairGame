@@ -10,7 +10,7 @@ function IntroSlide({ swiper }) {
 
   return (
     <div className="slide-container intro-slide">
-      <div className="game-illustration"><User size={80} strokeWidth={1.5} /></div>
+      <div className="game-illustration"><User size={80} strokeWidth={1.5} color="var(--accent-warm)" /></div>
       <h1 className="game-title">Walk in Amira's Shoes</h1>
       <p className="game-subtitle">Experience a day in the life of a 10-year-old orphan</p>
       
@@ -32,9 +32,7 @@ function IntroSlide({ swiper }) {
         Begin Amira's Day
       </button>
 
-      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
-      </div>
+ 
     </div>
   )
 }

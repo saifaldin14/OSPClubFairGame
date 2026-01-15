@@ -27,7 +27,7 @@ function OSPIntroSlide({ swiper }) {
 
       <div className="osp-stats">
         <div className="stat-item">
-          <div className="stat-number">10,000+</div>
+          <div className="stat-number">10K+</div>
           <div className="stat-label">Children Supported</div>
         </div>
         <div className="stat-item">
@@ -50,9 +50,7 @@ function OSPIntroSlide({ swiper }) {
         </button>
       </div>
 
-      <div style={{ marginTop: '2rem', fontSize: '0.875rem', opacity: 0.8 }}>
-        <p><Lightbulb size={14} /> Use arrow keys or swipe to navigate between slides</p>
-      </div>
+   
     </div>
   )
 }
