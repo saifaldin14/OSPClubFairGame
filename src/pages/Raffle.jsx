@@ -190,6 +190,13 @@ function Raffle() {
   const handleDeleteRaffle = async (raffleId) => {
     if (!confirm('Are you sure you want to delete this raffle?')) return
     
+    // PIN code verification
+    const pinCode = prompt('Please enter PIN code to confirm deletion:')
+    if (pinCode !== '1221') {
+      alert('Incorrect PIN code. Deletion cancelled.')
+      return
+    }
+    
     try {
       await deleteRaffleService(raffleId)
       
@@ -198,6 +205,7 @@ function Raffle() {
         setActiveRaffle(null)
         setWinner(null)
       }
+      alert('Raffle deleted successfully.')
     } catch (error) {
       console.error('Error deleting raffle:', error)
       alert('Failed to delete raffle. Please try again.')
