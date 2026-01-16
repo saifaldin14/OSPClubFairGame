@@ -5,6 +5,7 @@ import OSPIntroSlide from './slides/OSPIntroSlide'
 import GameSlide from './slides/GameSlide'
 import OrphanageSimGame from './slides/OrphanageSimGame'
 import ImpactVisualizerGame from './slides/ImpactVisualizerGame'
+import RaffleSlide from './slides/RaffleSlide'
 import GetInvolvedSlide from './slides/GetInvolvedSlide'
 
 // Import Swiper styles
@@ -59,7 +60,12 @@ function App() {
           <ImpactVisualizerGame swiper={swiperInstance} />
         </SwiperSlide>
 
-        {/* Slide 5: Get Involved */}
+        {/* Slide 5: Raffle System */}
+        <SwiperSlide>
+          <RaffleSlide swiper={swiperInstance} />
+        </SwiperSlide>
+
+        {/* Slide 6: Get Involved */}
         <SwiperSlide>
           <GetInvolvedSlide swiper={swiperInstance} />
         </SwiperSlide>

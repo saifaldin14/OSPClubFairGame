@@ -10,6 +10,7 @@ function Navbar() {
     { path: '/about', label: 'About' },
     { path: '/programs', label: 'Programs' },
     { path: '/game', label: '3 Choices' },
+    { path: '/raffle', label: 'Raffle' },
     { path: '/events', label: 'Events' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/contact', label: 'Contact' },

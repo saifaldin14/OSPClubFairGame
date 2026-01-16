@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
+import { getDatabase } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 import { getAnalytics } from 'firebase/analytics'
 
@@ -12,7 +13,8 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "YOUR_PROJECT_ID.appspot.com",
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "YOUR_MESSAGING_SENDER_ID",
   appId: import.meta.env.VITE_FIREBASE_APP_ID || "YOUR_APP_ID",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "YOUR_MEASUREMENT_ID"
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "YOUR_MEASUREMENT_ID",
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || "DATABASE_URL"
 }
 
 // Initialize Firebase
@@ -20,6 +22,7 @@ const app = initializeApp(firebaseConfig)
 
 // Initialize Firebase services
 export const db = getFirestore(app)
+export const realtimeDb = getDatabase(app)
 export const auth = getAuth(app)
 export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null
 
