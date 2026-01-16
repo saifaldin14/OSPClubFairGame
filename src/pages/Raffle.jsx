@@ -254,8 +254,8 @@ function Raffle() {
     <div className="page raffle-page">
       <div className="page-hero">
         <div className="container">
-          <h1 className="page-title">Online Raffle System</h1>
-          <p className="page-subtitle">Create raffles, collect entries, and draw winners</p>
+          <h1 className="page-title">Enter for a Chance to Win!</h1>
+          <p className="page-subtitle">Help support our causes and enter for a chance to win awesome prizes</p>
         </div>
       </div>
 
